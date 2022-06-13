@@ -1,0 +1,48 @@
+.toggle{
+  /* the following create variables that we can use elsewhere */
+  --width: 60px;
+  --height: calc(var(--width) /2);
+  --border-radius: calc(var(--height)/2);
+
+  display: inline-block;
+  cursor: pointer;
+
+}
+
+.toggle__input{
+  display: none;
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  /* position: absolute; */
+  /* left: -9999px; */
+}
+
+.toggle__input:checked ~ .toggle__fill{
+  background: #005978;
+}
+
+.toggle__fill{
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  transition: background 0.5s;
+}
+
+.toggle__fill:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: calc(var(--width)/2);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+  border-radius: var(--border-radius);
+transition: transform 0.5s;
+}
+
+.toggle__input:checked ~ .toggle__fill::after{
+  transform: translateX(var(--height));
+}
